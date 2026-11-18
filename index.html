@@ -1,0 +1,33 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10130f"><title>Yellow Jacket · Français / English</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#10130f;color:#f2f1e6;font-family:Arial,Helvetica,sans-serif}
+main{min-height:100vh;min-height:100svh;display:grid;place-items:center;padding:24px}
+article{width:min(100%,950px);display:grid;grid-template-columns:1.06fr 1fr;overflow:hidden;background:#1b201a;border:1px solid #484b36;box-shadow:0 24px 80px #0006}
+figure{margin:0;min-height:450px;background:linear-gradient(0deg,#10130f30,transparent 70%),url('assets/faceoff.jpg') 50% 28%/cover}
+section{padding:clamp(24px,4vw,54px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center}
+h1{margin:0;font:italic 900 clamp(45px,6.4vw,85px)/.82 Arial,sans-serif;letter-spacing:-.085em}h1 span{display:block;color:#e1f656}
+p{margin:21px 0 0;font-weight:bold;letter-spacing:.05em}fieldset{padding:0;border:0;margin:48px 0 0;width:100%}legend{padding:0;margin-bottom:12px;font-size:14px;color:#c3c9b6}nav{display:flex;gap:8px}a{display:inline-flex;justify-content:center;align-items:center;flex:1;min-height:46px;color:#191d13;background:#e1f656;text-decoration:none;font-weight:bold;border:1px solid #e1f656}a:hover,a:focus-visible{background:white;outline:3px solid white;outline-offset:3px}
+@media(max-width:640px){main{padding:16px}article{max-width:450px;grid-template-columns:1fr}figure{min-height:0;height:clamp(145px,35svh,265px);background-position:center 19%}section{padding:27px}h1 span{display:inline}h1{font-size:clamp(33px,9vw,55px)}p{margin-top:12px}fieldset{margin-top:25px}}
+</style></head><body><main><article><figure role="img" aria-label="Cédric Doumbé et Jake Paul"></figure><section>
+<h1>YELLOW <span>JACKET</span></h1><p>Cédric Doumbé × Jake Paul</p>
+<fieldset><legend>Choisis ta langue · <span lang="en">Choose your language</span></legend>
+<nav aria-label="Langue / Language"><a id="fr" href="fr/index.html" lang="fr" hreflang="fr">Français</a><a id="en" href="en/index.html" lang="en" hreflang="en">English</a></nav></fieldset>
+</section></article></main><script>
+const params=new URLSearchParams(location.search);
+function known(value){return value==='fr'||value==='en'}
+function remember(value){try{localStorage.setItem('yellow-jacket.language',value)}catch{}}
+function saved(){try{return localStorage.getItem('yellow-jacket.language')}catch{return null}}
+for(const lang of ['fr','en'])document.getElementById(lang).addEventListener('click',()=>remember(lang));
+const requested=params.get('lang');
+const language=known(requested)?requested:saved();
+if(known(language)){
+ if(known(requested))remember(language);
+ const locker=params.get('view')==='atelier';
+ const destination=new URL(language+'/'+(locker?'atelier':'index')+'.html',location.href);
+ for(const key of locker?['boxer','vest']:['doumbe','jake']){
+  if(params.has(key))destination.searchParams.set(key,params.get(key));
+ }
+ location.replace(destination.href);
+}
+</script></body></html>
