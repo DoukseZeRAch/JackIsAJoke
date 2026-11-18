@@ -1,9 +1,9 @@
-# Yellow Jacket · Cédric Doumbé × Jake Paul
+# JackIsAJoke — Yellow Jacket · Cédric Doumbé × Jake Paul
 
 Site statique bilingue (français / anglais) : « La négociation annuelle » et le « Vestiaire ».
 Aucune dépendance, aucun build : des fichiers HTML, un script d'images et une photo.
 
-**Démo :** https://VOTRE-UTILISATEUR.github.io/Yellow_Jacket_FR_EN/
+**Démo :** https://DoukseZeRAch.github.io/JackIsAJoke/
 
 ## Structure
 
